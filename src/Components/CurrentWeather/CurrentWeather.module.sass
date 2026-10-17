@@ -1,0 +1,24 @@
+@use '../../../common/Styles/_variables.sass' as *
+    
+.container 
+    padding: $weather-container-padding
+    border-radius: 10px
+    outline: 3px green solid
+    display: flex
+    flex-direction: column
+    justify-content: center
+    flex-grow: 0
+    
+    width: fit-content
+    // 724 px
+
+    flex-shrink: 1
+    flex-basis: auto
+
+    // 60px = body padding
+    @media (min-width: (($weather-block-minWidth + $weather-container-padding) * 2) + 60px)
+        flex-direction: row
+        flex-wrap: wrap 
+        
+
+
