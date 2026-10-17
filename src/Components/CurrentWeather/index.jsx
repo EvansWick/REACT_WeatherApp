@@ -5,13 +5,20 @@ import styles from "./CurrentWeather.module.sass";
 
 const WEATHER_UNITS = {
   WIND_SPEED: {
-    MS: "ms",
-    KH: "kh",
+    MS: { name: "ms", value: "m/s" },
+    KH: { name: "kh", value: "k/h" },
   },
   TEMPERATURE: {
-    FAHRENHEIT: "fahrenheit",
-    CELSIUS: "celsius",
+    FAHRENHEIT: { name: "fahrenheit", value: "oF" },
+    CELSIUS: { name: "celsius", value: "oC" },
   },
+};
+
+const getWeathersUnitsArray = () => {
+  const arr = Object.values(WEATHER_UNITS).map((unitGroup) => {
+    return Object.values(unitGroup);
+  });
+  console.log(arr);
 };
 
 const selectUnitsNames = {
@@ -20,9 +27,10 @@ const selectUnitsNames = {
 };
 
 function CurrentWeather() {
+  // getWeathersUnitsArray();
   const [units, setUnits] = useState({
-    windSpeedUnit: "ms",
-    temperatureUnit: "celsius",
+    windSpeedUnit: { name: "ms", value: "m/s" },
+    temperatureUnit: { name: "celsius", value: "oC" },
   });
   const [weatherData, setWeatherData] = useState({
     windSpeed: "20",
@@ -53,11 +61,11 @@ function CurrentWeather() {
             temperature: temperature_2m,
           }));
           // Встановлення стану одиниць вимірювання погоди
-          setUnits((prevUnits) => ({
-            ...prevUnits,
-            windSpeedUnit: current_units.wind_speed_10m,
-            temperatureUnit: current_units.temperature_2m,
-          }));
+          // setUnits((prevUnits) => ({
+          //   ...prevUnits,
+          //   windSpeedUnit: current_units.wind_speed_10m,
+          //   temperatureUnit: current_units.temperature_2m,
+          // }));
         },
       )
       .catch((e) => {
@@ -86,13 +94,13 @@ function CurrentWeather() {
       <WeatherBlockContainer>
         <SelectContainer
           title="Wind speed unit"
-          units={Object.values(WEATHER_UNITS.WIND_SPEED)}
+          units={Object.values(WEATHER_UNITS.WIND_SPEED)[0]}
           setUnitsState={setUnitsState}
           nameU={"windSpeedUnit"}
         />
         <SelectContainer
           title="Temperature unit"
-          units={Object.values(WEATHER_UNITS.TEMPERATURE)}
+          units={Object.values(WEATHER_UNITS.TEMPERATURE)[1]}
           nameU={"temperatureUnit"}
           setUnitsState={setUnitsState}
         />

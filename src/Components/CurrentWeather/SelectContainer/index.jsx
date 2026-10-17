@@ -3,7 +3,7 @@ import styles from "./SelectContainer.module.sass";
 import PropTypes from "prop-types";
 
 function SelectContainer(props) {
-  const { title, units, setUnitsState } = props;
+  const { title, units, setUnitsState, nameU } = props;
 
   return (
     <div className={styles.container}>
@@ -11,7 +11,7 @@ function SelectContainer(props) {
       <select
         onChange={setUnitsState}
         className={styles.select}
-        name={title}
+        name={nameU}
         id=""
       >
         {units.map((item) => {

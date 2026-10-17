@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  font-size: 30px;
+}
 
 body {
   height: 100vh;
