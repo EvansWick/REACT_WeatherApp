@@ -1,26 +1,30 @@
 @use '../../../../common/Styles/_variables' as *
 
+$weather-block-minWidth: 13rem
+$title-margin: 0.5rem
+
 .block 
     @extend %flex-center
     padding: $weather-block-padding
     border-radius: 10px 
 
-    // Має бути релатів
-
     flex-direction: column
 
-    border: 3px solid black
-    // height: 180px
     width: $weather-block-minWidth 
 
-.childrenContainer
-    
+    background-color: $Block-bg-color
 
+.childrenContainer
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    
 
 .title
     font-size: 1.5rem
     font-weight: 600
     margin: 0 0 $title-margin
-
-
-.weatherBlockItem
+    text-align: center
+    width: 100%
+    

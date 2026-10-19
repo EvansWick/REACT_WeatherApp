@@ -3,22 +3,31 @@
 .container 
     padding: $weather-container-padding
     border-radius: 10px
-    outline: 3px green solid
+
     display: flex
     flex-direction: column
     justify-content: center
     flex-grow: 0
+    gap: $weather-container-padding
     
     width: fit-content
-    // 724 px
+    background-color: $Container-bg-color
 
-    flex-shrink: 1
-    flex-basis: auto
 
-    // 60px = body padding
-    @media (min-width: (($weather-block-minWidth + $weather-container-padding) * 2) + 2rem)
+    // 912px for 30px of html font-size
+    @media (min-width: 912px) 
         flex-direction: row
         flex-wrap: wrap 
         
 
+// .unitStyle
 
+.weatherBlockItem 
+    font-size: 1rem / 2
+    display: flex
+    justify-content: center
+    width: 70%
+
+    .weatherValue
+        color: black
+        margin: 0 10px

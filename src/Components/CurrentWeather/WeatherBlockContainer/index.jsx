@@ -1,6 +1,4 @@
-import React from "react";
 import PropTypes from "prop-types";
-
 import styles from "./WeatherBlockContainer.module.sass";
 
 function WeatherBlockContainer(props) {
@@ -16,7 +14,6 @@ function WeatherBlockContainer(props) {
 
 WeatherBlockContainer.propTypes = {
   title: PropTypes.string,
-  isChildrenArrayObject: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
