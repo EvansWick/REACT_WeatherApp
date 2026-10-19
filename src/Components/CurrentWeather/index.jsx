@@ -49,6 +49,22 @@ function CurrentWeather() {
     error: null,
   });
 
+  const getWeatherResultsArray = () => {
+    // При доданні параметрів крім температури і швидкості вітру, можна дописати функцію
+    return [
+      {
+        key: weatherData.temperature,
+        unit: units.temperatureUnit,
+        type: "temperature",
+      },
+      {
+        key: weatherData.windSpeed,
+        unit: units.windSpeedUnit,
+        type: "windSpeed",
+      },
+    ];
+  };
+
   const loadWeather = () => {
     setLoadStatus((prevstatus) => {
       return { ...prevstatus, isFetching: true };
@@ -118,23 +134,13 @@ function CurrentWeather() {
         />
       </WeatherBlockContainer>
       <WeatherBlockContainer title="Поточна погода">
-        {isFetching && <span>Loading</span>}
+        {isFetching && (
+          <span className={styles.loadingStyle}>Завантаження</span>
+        )}
         {error && <span>Error: {error.message}</span>}
         {!error &&
           !isFetching &&
-          [
-            {
-              key: weatherData.temperature,
-              unit: units.temperatureUnit,
-              type: "temperature",
-            },
-            {
-              key: weatherData.windSpeed,
-              unit: units.windSpeedUnit,
-              type: "windSpeed",
-            },
-          ].map((item) => {
-            // console.log(item.unit.name);
+          getWeatherResultsArray().map((item) => {
             return (
               <div key={item.unit.name} className={styles.weatherBlockItem}>
                 {WEATHER_ICONS[item.type]}
